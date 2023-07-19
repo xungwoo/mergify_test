@@ -16,7 +16,8 @@ queue_rules:
 pull_request_rules:
   - name: Automatic merge on approval
     conditions:
-      - "#approved-reviews-by>=1"
+      - base=master
+      - label=ready-to-merge
     actions:
       merge:
         method: merge
