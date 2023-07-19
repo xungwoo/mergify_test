@@ -1,7 +1,23 @@
+queue_rules:
+  - name: default
+#    merge_conditions:
+#      - "#approved-reviews-by>=2"
+#      - check-success=Travis CI - Pull Request
+    priority_rules:
+      - name: 🚑 hotfix
+        conditions:
+          - label=🚑 hotfix
+        priority: high
+      - name: 🤖 low priority
+        conditions:
+          - author=dependabot[bot]
+        priority: low
+
 pull_request_rules:
   - name: Automatic merge on approval
     conditions:
-      - "#approved-reviews-by>=1"
+      - base=master
+      - label=ready-to-merge
     actions:
       merge:
         method: merge
